@@ -1,0 +1,34 @@
+{
+  "name": "template_cdk-minimum-project-ts",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "npm": "9.7.1"
+  },
+  "scripts": {
+    "setup": "rm -rf .github && npm install && sed -i -e s/{{test}}/`basename $(PWD)`/g src/app.ts",
+    "synth": "cdk synth --app 'npx ts-node src/app.ts'",
+    "deploy": "cdk deploy --app 'npx ts-node src/app.ts'",
+    "destroy": "cdk destroy --app 'npx ts-node src/app.ts'",
+    "dia": "cdk synth --app 'npx ts-node src/app.ts' && cdk-dia && mv diagram.png docs/diagrams/app.png && rm diagram.dot",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/node": "20.3.1",
+    "aws-cdk": "2.84.0",
+    "cdk-dia": "^0.10.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.1.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.84.0",
+    "constructs": "^10.2.54"
+  }
+}
